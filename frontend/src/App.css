@@ -1,33 +1,37 @@
-.app-container {
-  display: flex;
-  flex-direction: column;
+.app {
   min-height: 100vh;
-  width: 100vw;
-  background: radial-gradient(circle at top right, #1e1b4b, #020617);
   position: relative;
+  overflow: hidden;
 }
 
-/* Ambient glow effects */
-.app-container::before {
-  content: '';
-  position: absolute;
-  top: -20%;
-  left: -10%;
-  width: 50%;
-  height: 50%;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 60%);
-  z-index: 0;
+.ambient-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.15;
   pointer-events: none;
+  z-index: 0;
+  animation: float 20s ease-in-out infinite;
 }
 
-.app-container::after {
-  content: '';
-  position: absolute;
-  bottom: -20%;
-  right: -10%;
-  width: 50%;
-  height: 50%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 60%);
-  z-index: 0;
-  pointer-events: none;
+.orb-1 {
+  width: 600px;
+  height: 600px;
+  background: var(--primary);
+  top: -200px;
+  right: -200px;
+}
+
+.orb-2 {
+  width: 500px;
+  height: 500px;
+  background: var(--accent);
+  bottom: -200px;
+  left: -200px;
+  animation-delay: -10s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(30px, 20px); }
 }

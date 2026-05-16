@@ -1,28 +1,19 @@
 import { useState } from 'react';
-import Join from './components/Join';
+import Landing from './components/Landing';
 import Room from './components/Room';
 import './App.css';
 
 function App() {
-  const [inRoom, setInRoom] = useState(false);
   const [roomData, setRoomData] = useState(null);
 
-  const handleJoin = (data) => {
-    setRoomData(data);
-    setInRoom(true);
-  };
-
-  const handleLeave = () => {
-    setInRoom(false);
-    setRoomData(null);
-  };
-
   return (
-    <div className="app-container">
-      {inRoom ? (
-        <Room roomData={roomData} onLeave={handleLeave} />
+    <div className="app">
+      <div className="ambient-orb orb-1"></div>
+      <div className="ambient-orb orb-2"></div>
+      {roomData ? (
+        <Room roomData={roomData} onLeave={() => setRoomData(null)} />
       ) : (
-        <Join onJoin={handleJoin} />
+        <Landing onJoin={setRoomData} />
       )}
     </div>
   );
