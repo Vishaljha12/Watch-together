@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import { Send, LogOut, Copy, Link as LinkIcon, Play, Pause } from 'lucide-react';
 import './Room.css';
 
-const SOCKET_URL = 'http://localhost:5000'; 
+const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000'; 
 
 const Room = ({ roomData, onLeave }) => {
   const { userName, roomId, isHost } = roomData;
